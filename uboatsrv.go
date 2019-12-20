@@ -16,7 +16,7 @@ type UboatServer struct {
 func New() (*UboatServer, error) {
 	// for demo purposes we listen on localhost and only use default port
 
-	listener, err := net.ListenTCP("tcp", &net.TCPAddr{net.ParseIP("127.0.0.1"), USBIP_DEFAULT_PORT, ""})
+	listener, err := net.ListenTCP("tcp", &net.TCPAddr{net.ParseIP("0.0.0.0"), USBIP_DEFAULT_PORT, ""})
 	if err != nil {
 		return nil, err
 	}
