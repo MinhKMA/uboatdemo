@@ -3,7 +3,7 @@ package main
 import (
 	"log"
 
-	demo "github.com/pqsec/uboatdemo"
+	demo "github.com/minhkma/uboatdemo"
 )
 
 func main() {
