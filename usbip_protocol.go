@@ -33,7 +33,7 @@ const (
 	USB_SPEED_HIGH = 3
 
 	// how much to try to overflow
-	OVERFLOW_SIZE = 512
+	OVERFLOW_SIZE = 10
 )
 
 var (
@@ -226,7 +226,7 @@ func urbExchange(conn net.Conn) {
 
 		// for the purposes of demo we care about submit command only
 		if submit.Hdr.CmdCode == USBIP_CMD_SUBMIT {
-			// log.Println(hex.EncodeToString(buf[:n]))
+			log.Println(hex.EncodeToString(buf[:n]))
 			// read the whole structure
 			err = binary.Read(bytes.NewReader(buf), binary.BigEndian, &submit)
 			if err != nil {
@@ -253,7 +253,7 @@ func urbExchange(conn net.Conn) {
 			}
 
 			fillBuf(buf[USBIP_MESSAGE_SIZE:])
-			//log.Println(hex.EncodeToString(buf[:USBIP_MESSAGE_SIZE+ret.ActualLen]))
+			log.Println(hex.EncodeToString(buf[:USBIP_MESSAGE_SIZE+ret.ActualLen]))
 
 			_, err = conn.Write(buf)
 			if err != nil {
